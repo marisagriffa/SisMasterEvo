@@ -13,7 +13,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.engine('.hbs', exphbs.engine({
     defaultLayout: 'main',
-    layoutsDir: path.join(app.get('views'), 'layout'),
+    layoutsDir: path.join(app.get('views'), 'layouts'),
     partialsDir: path.join(app.get('views'), 'partials'),
     extname: '.hbs',
     helpers:  require('./lib/handlebars')
@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 app.use(require('./routes'));
 app.use(require('./routes/authentication'));
 //ver este "links" va a ser la base de datos
-//app.use('/links', require('./routes/links'));
+app.use('/links', require('./routes/links'));
 
 // Public
 app.use(express.static(path.join(__dirname, 'public')));
